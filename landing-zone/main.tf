@@ -5,7 +5,7 @@ locals {
 resource "aws_controltower_landing_zone" "this" {
   version = local.landing_zone_version
 
-  manifest_json  = jsonencode({
+  manifest_json = jsonencode({
     homeRegion      = var.home_region
     governedRegions = var.governed_regions
 
