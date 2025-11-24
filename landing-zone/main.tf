@@ -1,9 +1,5 @@
-locals {
-  landing_zone_version = "3.3" # adjust if docs show a newer version
-}
-
 resource "aws_controltower_landing_zone" "this" {
-  version = local.landing_zone_version
+  version = var.landing_zone_version
 
   manifest_json = jsonencode({
     homeRegion      = var.home_region
