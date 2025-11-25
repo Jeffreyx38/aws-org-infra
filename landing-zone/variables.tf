@@ -23,6 +23,6 @@ variable "audit_email" {
 variable "landing_zone_version" {
   description = "AWS Control Tower landing zone version; must be latest available."
   type        = string
-  default     = "3.3"
+  default     = "4.0"
 }
 
