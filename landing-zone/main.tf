@@ -40,12 +40,12 @@ resource "aws_controltower_landing_zone" "this" {
     }
   })
 
-#   depends_on = [
-#     aws_iam_role.aws_controltower_admin,
-#     aws_iam_role.aws_controltower_cloudtrail_role,
-#     aws_iam_role.aws_controltower_stackset_role,
-#     aws_iam_role.aws_controltower_config_aggregator_role,
-#   ]
+  #   depends_on = [
+  #     aws_iam_role.aws_controltower_admin,
+  #     aws_iam_role.aws_controltower_cloudtrail_role,
+  #     aws_iam_role.aws_controltower_stackset_role,
+  #     aws_iam_role.aws_controltower_config_aggregator_role,
+  #   ]
 
   # optional tags
   tags = {
