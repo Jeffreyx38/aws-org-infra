@@ -110,26 +110,32 @@ resource "aws_iam_role" "aws_controltower_cloudtrail_role" {
   })
 }
 
-resource "aws_iam_role_policy" "aws_controltower_cloudtrail_inline" {
-  name = "AWSControlTowerCloudTrailRolePolicy"
-  role = aws_iam_role.aws_controltower_cloudtrail_role.id
-
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Effect   = "Allow"
-        Action   = "logs:CreateLogStream"
-        Resource = "arn:aws:logs:*:*:log-group:aws-controltower/CloudTrailLogs:*"
-      },
-      {
-        Effect   = "Allow"
-        Action   = "logs:PutLogEvents"
-        Resource = "arn:aws:logs:*:*:log-group:aws-controltower/CloudTrailLogs:*"
-      }
-    ]
-  })
+resource "aws_iam_role_policy_attachment" "aws_controltower_cloudtrail_managed_policy" {
+  role       = aws_iam_role.aws_controltower_cloudtrail_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSControlTowerCloudTrailRolePolicy"
 }
+
+
+# resource "aws_iam_role_policy" "aws_controltower_cloudtrail_inline" {
+#   name = "AWSControlTowerCloudTrailRolePolicy"
+#   role = aws_iam_role.aws_controltower_cloudtrail_role.id
+
+#   policy = jsonencode({
+#     Version = "2012-10-17"
+#     Statement = [
+#       {
+#         Effect   = "Allow"
+#         Action   = "logs:CreateLogStream"
+#         Resource = "arn:aws:logs:*:*:log-group:aws-controltower/CloudTrailLogs:*"
+#       },
+#       {
+#         Effect   = "Allow"
+#         Action   = "logs:PutLogEvents"
+#         Resource = "arn:aws:logs:*:*:log-group:aws-controltower/CloudTrailLogs:*"
+#       }
+#     ]
+#   })
+# }
 
 ############################
 # AWSControlTowerConfigAggregatorRoleForOrganizations
