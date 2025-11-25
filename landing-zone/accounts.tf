@@ -14,6 +14,8 @@ resource "aws_organizations_account" "log_archive" {
   email     = var.log_archive_email
   role_name = "OrganizationAccountAccessRole"
 
+  parent_id = aws_organizations_organizational_unit.security.id
+
   depends_on = [aws_organizations_organization.this]
 }
 
@@ -23,18 +25,7 @@ resource "aws_organizations_account" "audit" {
   email     = var.audit_email
   role_name = "OrganizationAccountAccessRole"
 
+  parent_id = aws_organizations_organizational_unit.security.id
+
   depends_on = [aws_organizations_organization.this]
 }
-
-resource "aws_organizations_move_account" "log_archive_to_security" {
-  account_id            = aws_organizations_account.log_archive.id
-  source_parent_id      = aws_organizations_organization.this.roots[0].id
-  destination_parent_id = aws_organizations_organizational_unit.security.id
-}
-
-resource "aws_organizations_move_account" "audit_to_security" {
-  account_id            = aws_organizations_account.audit.id
-  source_parent_id      = aws_organizations_organization.this.roots[0].id
-  destination_parent_id = aws_organizations_organizational_unit.security.id
-}
-

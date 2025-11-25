@@ -57,8 +57,8 @@ resource "aws_controltower_landing_zone" "this" {
     aws_iam_role.aws_controltower_stackset_role,
     aws_iam_role.aws_controltower_config_aggregator_role,
     aws_organizations_organizational_unit.security,
-    aws_organizations_move_account.log_archive_to_security,
-    aws_organizations_move_account.audit_to_security
+    aws_organizations_account.log_archive,
+    aws_organizations_account.audit,
   ]
 
   # optional tags
