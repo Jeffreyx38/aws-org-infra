@@ -1,6 +1,13 @@
 # Create the AWS Organization (turns this account into the management account)
 resource "aws_organizations_organization" "this" {
   feature_set = "ALL"
+
+  lifecycle {
+    ignore_changes = [
+      aws_service_access_principals,
+      enabled_policy_types,
+    ]
+  }
 }
 
 resource "aws_organizations_organizational_unit" "security" {
