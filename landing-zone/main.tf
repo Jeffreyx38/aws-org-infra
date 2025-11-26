@@ -10,10 +10,10 @@ resource "aws_controltower_landing_zone" "this" {
       enabled   = true
       configurations = {
         loggingBucket = {
-          retentionDays = 3650
+          retentionDays = 90
         }
         accessLoggingBucket = {
-          retentionDays = 3650
+          retentionDays = 90
         }
       }
     }
@@ -41,10 +41,10 @@ resource "aws_controltower_landing_zone" "this" {
 
       configurations = {
         loggingBucket = {
-          retentionDays = 365
+          retentionDays = 90
         }
         accessLoggingBucket = {
-          retentionDays = 365
+          retentionDays = 90
         }
         # kmsKeyArn = "arn:aws:kms:region:account-id:key/key-id"
       }
