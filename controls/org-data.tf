@@ -10,9 +10,9 @@ locals {
     ou.name => ou.id
   }
 
-  security_ou_id      = local.ou_by_name["Security"]
-#   sandbox_ou_id       = local.ou_by_name["Sandbox"]
-#   workloads_prod_ou_id  = local.ou_by_name["Workloads-Prod"]
-#   workloads_nonprod_ou_id = local.ou_by_name["Workloads-NonProd"]
-#   infrastructure_ou_id = local.ou_by_name["Infrastructure"]
+  security_ou_id = local.ou_by_name["Security"]
+  #   sandbox_ou_id       = local.ou_by_name["Sandbox"]
+  #   workloads_prod_ou_id  = local.ou_by_name["Workloads-Prod"]
+  #   workloads_nonprod_ou_id = local.ou_by_name["Workloads-NonProd"]
+  #   infrastructure_ou_id = local.ou_by_name["Infrastructure"]
 }
