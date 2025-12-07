@@ -23,7 +23,7 @@ jobs:
 
     env:
       AWS_REGION: us-east-1
-      MANAGEMENT_ACCOUNT_ID: ${{ secrets.MANAGEMENT_ACCOUNT_ID }}
+      CONTROLS_ROLE_ARN: ${{ secrets.CONTROLS_ROLE_ARN }}
 
     steps:
       - uses: actions/checkout@v4
@@ -31,7 +31,7 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::${{env.MANAGEMENT_ACCOUNT_ID}}:role/GithubTerraformControlsRole
+          role-to-assume: ${{ env.CONTROLS_ROLE_ARN }}
           aws-region: ${{ env.AWS_REGION }}
 
       - uses: hashicorp/setup-terraform@v3

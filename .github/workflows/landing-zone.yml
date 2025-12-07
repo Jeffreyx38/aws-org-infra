@@ -26,7 +26,7 @@ jobs:
       AWS_REGION: us-east-1
       TF_VAR_log_archive_email: ${{ secrets.TF_VAR_log_archive_email }}
       TF_VAR_audit_email: ${{ secrets.TF_VAR_audit_email }}
-      MANAGEMENT_ACCOUNT_ID: ${{ secrets.MANAGEMENT_ACCOUNT_ID }}
+      LZ_CONTROLS_ROLE: ${{ secrets.LZ_CONTROLS_ROLE }}
 
     steps:
       - name: Checkout
@@ -35,7 +35,7 @@ jobs:
       - name: Configure AWS credentials via OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::${{ env.MANAGEMENT_ACCOUNT_ID }}:role/GithubTerraformLandingZoneRole
+          role-to-assume: ${{ env.LZ_CONTROLS_ROLE }}
           aws-region: ${{ env.AWS_REGION }}
 
       - name: Setup Terraform
